@@ -1,24 +1,11 @@
-# README
+# Docious 
+Ruby based back-end for Expiali the dating and networking application. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
+Expiali is a multi-platform application designed on top of the Matrix communications protocol specifically tailored to enhance the experience of online dating / networking. Expiali provides a layer of intent and real-time data analysis on top of Matrix accounts, and uses these datum to facilitate matches based primarily on proximity. Leveraging the power of the Flutter framework, Expiali will run on mobile, desktop, and web using the same codebase providing a consistent experience for the user. 
 
-Things you may want to cover:
+## Compiling
 
-* Ruby version
+## Installing
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## F.A.Q
