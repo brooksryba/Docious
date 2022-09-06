@@ -13,7 +13,8 @@ User.create!([
                {
                  email: 'poppins@gmail.com',
                  first_name: 'Marry',
-                 last_name: 'Poppins'
+                 last_name: 'Poppins',
+                 password: 'xxx'
                }
              ])
 
