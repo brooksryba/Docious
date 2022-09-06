@@ -7,7 +7,11 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :users, [Types::UserType], null: false,
-      description: 'Return a list of users'
+      description: 'Return a list of users' do
+        def authorized?(object, args, context)
+          context[:current_user]&.admin?
+        end
+      end
 
     field :interests, [Types::InterestType], null: false,
       description: 'Return a list of interests'
