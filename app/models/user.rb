@@ -10,6 +10,6 @@ class User < ApplicationRecord
   enum :group, { basic: 0, moderator: 1, admin: 2 }
 
   def admin?
-    group == "admin"
+    group == 'admin'
   end
 end

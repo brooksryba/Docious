@@ -8,7 +8,7 @@ module Types
 
     field :users, [Types::UserType], null: false,
       description: 'Return a list of users' do
-        def authorized?(object, args, context)
+        def authorized?(_object, _args, context)
           context[:current_user]&.admin?
         end
       end
@@ -16,12 +16,19 @@ module Types
     field :interests, [Types::InterestType], null: false,
       description: 'Return a list of interests'
 
+    field :conversations, [Types::ConversationType], null: false,
+      description: 'Return a list of conversations'
+
     def users
       User.all
     end
 
     def interests
       Interest.all
+    end
+
+    def conversations
+      Conversation.all
     end
   end
 end

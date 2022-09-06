@@ -30,7 +30,7 @@ User.create!([
                  last_name: 'Banks',
                  password: 'xxx',
                  group: 0
-               }                     
+               }
              ])
 
 Interest.delete_all
@@ -40,3 +40,11 @@ Interest.create!([
                    { title: 'Photography', description: '' },
                    { title: 'Road Trips', description: '' }
                  ])
+
+Conversation.delete_all
+c = Conversation.create!(
+  author_id: 1,
+  recipient_id: 2
+)
+c.messages.create!(author_id: 1, content: 'This is a message!')
+c.messages.create!(author_id: 2, content: 'This is a response...')

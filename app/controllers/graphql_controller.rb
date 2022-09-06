@@ -11,8 +11,6 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # we need to provide session and current user
-      session:,
       current_user:
     }
     result = DociousSchema.execute(query, variables:, context:, operation_name:)
