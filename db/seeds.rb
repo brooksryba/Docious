@@ -11,7 +11,7 @@
 User.delete_all
 User.create!([
                {
-                 email: 'poppins@gmail.com',
+                 email: 'mpoppins@gmail.com',
                  first_name: 'Marry',
                  last_name: 'Poppins',
                  password: 'xxx',
@@ -41,10 +41,13 @@ Interest.create!([
                    { title: 'Road Trips', description: '' }
                  ])
 
+michael = User.find_by(email: 'mbanks@gmail.com')
+jane = User.find_by(email: 'jbanks@gmail.com')
+
 Conversation.delete_all
 c = Conversation.create!(
-  author_id: 1,
-  recipient_id: 2
+  author_id: michael.id,
+  recipient_id: jane.id
 )
-c.messages.create!(author_id: 1, content: 'This is a message!')
-c.messages.create!(author_id: 2, content: 'This is a response...')
+c.messages.create!(author_id: michael.id, content: 'This is a message!')
+c.messages.create!(author_id: jane.id, content: 'This is a response...')
