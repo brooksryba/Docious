@@ -14,8 +14,23 @@ User.create!([
                  email: 'poppins@gmail.com',
                  first_name: 'Marry',
                  last_name: 'Poppins',
-                 password: 'xxx'
-               }
+                 password: 'xxx',
+                 group: 2
+               },
+               {
+                 email: 'mbanks@gmail.com',
+                 first_name: 'Michael',
+                 last_name: 'Banks',
+                 password: 'xxx',
+                 group: 0
+               },
+               {
+                 email: 'jbanks@gmail.com',
+                 first_name: 'Jane',
+                 last_name: 'Banks',
+                 password: 'xxx',
+                 group: 0
+               }                     
              ])
 
 Interest.delete_all
