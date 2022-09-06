@@ -6,6 +6,9 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
+    field :viewer, Types::UserType, null: false,
+      description: 'Return the current user'
+
     field :users, [Types::UserType], null: false,
       description: 'Return a list of people near the user'
 
@@ -15,9 +18,15 @@ module Types
     field :conversations, [Types::ConversationType], null: false,
       description: 'Return a list of conversations'
 
-    def users
+    def viewer
+      context[:current_user]
+    end
+
+    def users # rubocop:disable Metrics/AbcSize
+      id = context[:current_user].id
       point = context[:current_user]&.latlon
-      User.where(User.arel_table[:latlon].st_distance(point).lt(0.17))
+      dist = context[:current_user]&.preference&.max_distance
+      User.where(User.arel_table[:latlon].st_distance(point).lt(dist)).where.not(id:)
     end
 
     def interests

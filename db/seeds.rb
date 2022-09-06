@@ -53,3 +53,7 @@ c = Conversation.create!(
 )
 c.messages.create!(author_id: michael.id, content: 'This is a message!')
 c.messages.create!(author_id: jane.id, content: 'This is a response...')
+
+Preference.delete_all
+Preference.create!(user_id: michael.id, max_distance: 1.0, min_age: 20, max_age: 25)
+Preference.create!(user_id: jane.id, max_distance: 0.1, min_age: 23, max_age: 24)

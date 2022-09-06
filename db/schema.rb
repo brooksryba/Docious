@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_000802) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_000803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -36,6 +36,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_000802) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.float "max_distance"
+    t.integer "min_age"
+    t.integer "max_age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
