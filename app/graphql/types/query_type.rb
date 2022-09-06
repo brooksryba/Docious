@@ -7,10 +7,17 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :users, [Types::UserType], null: false,
-                                     description: 'Return a list of users'
+      description: 'Return a list of users'
+
+    field :interests, [Types::InterestType], null: false,
+      description: 'Return a list of interests'
 
     def users
       User.all
+    end
+
+    def interests
+      Interest.all
     end
   end
 end
