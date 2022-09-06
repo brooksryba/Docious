@@ -23,8 +23,7 @@ User.create!([
                  last_name: 'Banks',
                  password: 'xxx',
                  group: 0,
-                 latitude: 42.604715,
-                 longitude: -83.938629
+                 latlon: RGeo::Geographic.spherical_factory(srid: 4326).point(42.604715, -83.938629)
                },
                {
                  email: 'jbanks@gmail.com',
@@ -32,8 +31,7 @@ User.create!([
                  last_name: 'Banks',
                  password: 'xxx',
                  group: 0,
-                 latitude: 42.527468,
-                 longitude: -83.787242
+                 latlon: RGeo::Geographic.spherical_factory(srid: 4326).point(42.527468, -83.787242)
                }
              ])
 

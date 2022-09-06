@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
 
+  attribute :latlon, :st_point, srid: 4326
+
   enum :group, { basic: 0, moderator: 1, admin: 2 }
 
   def admin?

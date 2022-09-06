@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_000800) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_000802) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "postgis"
+
   create_table "conversations", force: :cascade do |t|
     t.integer "author_id"
     t.integer "recipient_id"
@@ -26,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_000800) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "conversation_id"
+    t.bigint "conversation_id"
     t.integer "author_id"
     t.string "content"
     t.datetime "created_at", null: false
@@ -42,8 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_000800) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.integer "group", default: 0
-    t.float "latitude", default: 0.0
-    t.float "longitude", default: 0.0
+    t.geometry "latlon", limit: {:srid=>0, :type=>"st_point"}
   end
 
 end

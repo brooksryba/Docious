@@ -81,3 +81,7 @@ gem 'rubocop', '~> 1.36'
 gem 'bcrypt', '~> 3.1'
 
 gem 'ffi', '~> 1.15'
+
+gem 'rgeo', '~> 2.4'
+
+gem 'activerecord-postgis-adapter', '~> 8.0'

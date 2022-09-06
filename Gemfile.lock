@@ -54,6 +54,9 @@ GEM
     activerecord (7.0.3.1)
       activemodel (= 7.0.3.1)
       activesupport (= 7.0.3.1)
+    activerecord-postgis-adapter (8.0.1)
+      activerecord (~> 7.0.0)
+      rgeo-activerecord (~> 7.0.0)
     activestorage (7.0.3.1)
       actionpack (= 7.0.3.1)
       activejob (= 7.0.3.1)
@@ -181,6 +184,10 @@ GEM
     reline (0.3.1)
       io-console (~> 0.5)
     rexml (3.2.5)
+    rgeo (2.4.0)
+    rgeo-activerecord (7.0.1)
+      activerecord (>= 5.0)
+      rgeo (>= 1.0.0)
     rubocop (1.36.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -242,6 +249,7 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  activerecord-postgis-adapter (~> 8.0)
   bcrypt (~> 3.1)
   bootsnap
   capybara
@@ -254,6 +262,7 @@ DEPENDENCIES
   pg
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
+  rgeo (~> 2.4)
   rubocop (~> 1.36)
   selenium-webdriver
   sprockets-rails

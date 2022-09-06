@@ -16,7 +16,8 @@ module Types
       description: 'Return a list of conversations'
 
     def users
-      User.all
+      point = context[:current_user]&.latlon
+      User.where(User.arel_table[:latlon].st_distance(point).lt(0.17))
     end
 
     def interests
