@@ -80,4 +80,4 @@ gem 'rubocop', '~> 1.36'
 
 gem 'bcrypt', '~> 3.1'
 
-gem "ffi", "~> 1.15"
+gem 'ffi', '~> 1.15'
