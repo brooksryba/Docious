@@ -22,14 +22,18 @@ User.create!([
                  first_name: 'Michael',
                  last_name: 'Banks',
                  password: 'xxx',
-                 group: 0
+                 group: 0,
+                 latitude: 42.604715,
+                 longitude: -83.938629
                },
                {
                  email: 'jbanks@gmail.com',
                  first_name: 'Jane',
                  last_name: 'Banks',
                  password: 'xxx',
-                 group: 0
+                 group: 0,
+                 latitude: 42.527468,
+                 longitude: -83.787242
                }
              ])
 

@@ -24,7 +24,8 @@ module Types
     end
 
     def conversations
-      Conversation.where(recipient_id: context[:current_user]&.id).or(Conversation.where(author_id: context[:current_user]&.id))
+      Conversation.where(recipient_id: context[:current_user]&.id)
+                  .or(Conversation.where(author_id: context[:current_user]&.id))
     end
   end
 end

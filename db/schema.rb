@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_06_025020) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_000800) do
   create_table "conversations", force: :cascade do |t|
     t.integer "author_id"
     t.integer "recipient_id"
@@ -42,6 +42,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_06_025020) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.integer "group", default: 0
+    t.float "latitude", default: 0.0
+    t.float "longitude", default: 0.0
   end
 
 end
