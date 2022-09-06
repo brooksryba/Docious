@@ -7,7 +7,7 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :users, [Types::UserType], null: false,
-      description: 'Return a list of users liked'
+      description: 'Return a list of people near the user'
 
     field :interests, [Types::InterestType], null: false,
       description: 'Return a list of interests'
@@ -16,7 +16,7 @@ module Types
       description: 'Return a list of conversations'
 
     def users
-      context[:current_user].starred
+      User.all
     end
 
     def interests
