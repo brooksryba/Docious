@@ -6,13 +6,14 @@ class GraphqlController < ApplicationController
   # but you'll have to authenticate your user separately
   protect_from_forgery with: :null_session
 
-  def execute
+  def execute # rubocop:disable Metrics/MethodLength
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
     context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
+      # we need to provide session and current user
+      session:,
+      current_user:
     }
     result = DociousSchema.execute(query, variables:, context:, operation_name:)
     render json: result
@@ -23,6 +24,19 @@ class GraphqlController < ApplicationController
   end
 
   private
+
+  # gets current user from token stored in the session
+  def current_user
+    # if we want to change the sign-in strategy, this is the place to do it
+    return unless session[:token]
+
+    crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
+    token = crypt.decrypt_and_verify session[:token]
+    user_id = token.gsub('user-id:', '').to_i
+    User.find user_id
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
+  end
 
   # Handle variables in form data, JSON body, or a blank value
   def prepare_variables(variables_param) # rubocop:disable Metrics/MethodLength
