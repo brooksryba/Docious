@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://test:test@localhost:5432/test"
+      DATABASE_URL: "postgis://test:test@localhost:5432/test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -50,4 +50,4 @@ jobs:
           bundler-cache: true
       # Add or replace any other lints here
       - name: Lint Ruby files
-        run: bundle exec rubocop --parallel
+        run: bundle exec rubocop --parallel --config .rubocop.yml
