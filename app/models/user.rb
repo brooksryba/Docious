@@ -22,6 +22,7 @@ class User < ApplicationRecord
     User
       .where(User.arel_table[:latlon].st_distance(latlon).lt(preference&.max_distance))
       .where(birthdate: preference&.max_age&.years&.ago..preference&.min_age&.years&.ago)
+      .where(pinged_at: 1.day.ago..DateTime.current)
       .where(deleted_at: nil)
       .where.not(id:)
   end

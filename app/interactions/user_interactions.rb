@@ -59,6 +59,7 @@ module Interaction
       # ensures we have the correct user
       return unless user
       return unless user.authenticate(credentials[:password])
+      user.update!(pinged_at: DateTime.current)
 
       # use Ruby on Rails - ActiveSupport::MessageEncryptor, to build a token
       crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
