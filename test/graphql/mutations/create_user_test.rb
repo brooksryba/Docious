@@ -12,6 +12,7 @@ module Mutations
       user = perform(
         first_name: 'Test',
         last_name: 'User',
+        birthdate: DateTime.current,
         auth_provider: {
           credentials: {
             email: 'email@example.com',

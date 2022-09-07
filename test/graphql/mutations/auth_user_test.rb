@@ -12,6 +12,7 @@ module Mutations
       User.create!(
         first_name: 'Test',
         last_name: 'User',
+        birthdate: DateTime.current,
         email: 'email@example.com',
         password: '[omitted]'
       )
