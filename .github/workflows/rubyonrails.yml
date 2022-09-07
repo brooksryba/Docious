@@ -49,5 +49,9 @@ jobs:
         with:
           bundler-cache: true
       # Add or replace any other lints here
+      - name: SOS
+        run: ls
+      - name: SOS2
+        run: pwd
       - name: Lint Ruby files
-        run: bundle exec rubocop --parallel --config .rubocop.yml
+        run: bundle exec rubocop --config .rubocop.yml --parallel 
