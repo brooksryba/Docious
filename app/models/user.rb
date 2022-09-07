@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_one :preference
+  has_one :profile
 
   validates :first_name, presence: true
   validates :last_name, presence: true

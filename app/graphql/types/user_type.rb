@@ -8,7 +8,7 @@ module Types
     field :email, String
     field :latlon, String
     field :preference, Types::PreferenceType do
-      def authorized?(obj, ref, context)
+      def authorized?(obj, _ref, context)
         context[:current_user] == obj
       end
     end
