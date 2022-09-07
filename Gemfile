@@ -87,3 +87,5 @@ gem 'rgeo', '~> 2.4'
 gem 'activerecord-postgis-adapter', '~> 8.0'
 
 gem 'byebug', '~> 11.1'
+
+gem "bundler-audit", "~> 0.9.1"
