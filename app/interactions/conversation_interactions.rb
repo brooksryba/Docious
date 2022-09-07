@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+module ConversationInteractions
+end
+
 module Interaction
   class StartConversation < BaseInteraction
     def self.execute(author_id:, recipient_id:)

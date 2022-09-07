@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+module UserInteractions
+end
+
 module Interaction
   class UpdateUser < BaseInteraction
     def self.execute(id:, first_name:, last_name:, email:, birthdate:, password:)
