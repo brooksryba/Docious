@@ -13,4 +13,9 @@ Layout/HashAlignment:
 Style/Documentation:
   Enabled: false
 
+Metrics/ParameterLists:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Enabled: false
   

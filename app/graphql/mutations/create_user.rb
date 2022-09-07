@@ -10,17 +10,16 @@ module Mutations
 
     argument :first_name, String, required: true
     argument :last_name, String, required: true
+    argument :birthdate, GraphQL::Types::ISO8601DateTime, required: true
     argument :auth_provider, AuthProviderSignupData, required: false
 
     type Types::UserType
 
-    def resolve(first_name: nil, last_name: nil, auth_provider: nil)
-      User.create!(
-        first_name:,
-        last_name:,
-        email: auth_provider&.[](:credentials)&.[](:email),
-        password: auth_provider&.[](:credentials)&.[](:password)
-      )
+    def resolve(first_name:, last_name:, birthdate:, auth_provider:)
+      email = auth_provider&.[](:credentials)&.[](:email)
+      password = auth_provider&.[](:credentials)&.[](:password)
+
+      Interaction::CreateUser.run(first_name:, last_name:, birthdate:, email:, password:)
     end
   end
 end

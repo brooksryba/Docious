@@ -12,18 +12,21 @@ GEO_FACTORY = RGeo::Geographic.spherical_factory(srid: 4326)
 
 Interest.delete_all
 Interest.create!([
-  { title: 'Board Games', description: '' },
-  { title: 'Camping', description: '' },
-  { title: 'Photography', description: '' },
-  { title: 'Road Trips', description: '' }
-])
+                   { title: 'Board Games', description: '' },
+                   { title: 'Camping', description: '' },
+                   { title: 'Photography', description: '' },
+                   { title: 'Road Trips', description: '' }
+                 ])
 
 User.delete_all
 User.create!([
-  { email: 'mpoppins@gmail.com', first_name: 'Marry', last_name: 'Poppins', password: 'xxx', group: 2, birthdate: Date.new(1984, 1, 1) },
-  { email: 'mbanks@gmail.com', first_name: 'Michael', last_name: 'Banks', password: 'xxx', group: 0, birthdate: Date.new(1999, 2, 1), latlon: GEO_FACTORY.point(42.604715, -83.938629) },
-  { email: 'jbanks@gmail.com', first_name: 'Jane', last_name: 'Banks', password: 'xxx', group: 0, birthdate: Date.new(1998, 3, 1), latlon: GEO_FACTORY.point(42.527468, -83.787242) }
-])
+               { email: 'mpoppins@gmail.com', first_name: 'Marry', last_name: 'Poppins', password: 'xxx', group: 2,
+birthdate: Date.new(1984, 1, 1) },
+               { email: 'mbanks@gmail.com', first_name: 'Michael', last_name: 'Banks', password: 'xxx', group: 0,
+             birthdate: Date.new(1999, 2, 1), latlon: GEO_FACTORY.point(42.604715, -83.938629) },
+               { email: 'jbanks@gmail.com', first_name: 'Jane', last_name: 'Banks', password: 'xxx', group: 0,
+             birthdate: Date.new(1998, 3, 1), latlon: GEO_FACTORY.point(42.527468, -83.787242) }
+             ])
 
 michael = User.find_by(email: 'mbanks@gmail.com')
 jane = User.find_by(email: 'jbanks@gmail.com')
@@ -41,5 +44,7 @@ Preference.create!(user_id: michael.id, max_distance: 1.0, min_age: 20, max_age:
 Preference.create!(user_id: jane.id, max_distance: 0.1, min_age: 23, max_age: 24)
 
 Profile.delete_all
-Profile.create!(user_id: michael.id, nickname: "Mike", biography: "This is my bigraphy. I like to do things.", interests: [Interest.find_by(title: "Board Games").id])
-Profile.create!(user_id: jane.id, nickname: "Janey", biography: "Learn all about me. This is my profile.", interests: [Interest.find_by(title: "Photography").id])
+Profile.create!(user_id: michael.id, nickname: 'Mike', biography: 'This is my bigraphy. I like to do things.',
+                interests: [Interest.find_by(title: 'Board Games').id])
+Profile.create!(user_id: jane.id, nickname: 'Janey', biography: 'Learn all about me. This is my profile.',
+                interests: [Interest.find_by(title: 'Photography').id])

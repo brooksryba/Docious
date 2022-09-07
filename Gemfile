@@ -85,3 +85,5 @@ gem 'ffi', '~> 1.15'
 gem 'rgeo', '~> 2.4'
 
 gem 'activerecord-postgis-adapter', '~> 8.0'
+
+gem 'byebug', '~> 11.1'
