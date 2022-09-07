@@ -1,10 +1,23 @@
 # frozen_string_literal: true
 
+require 'singleton'
+
 module Interaction
   class BaseInteraction
     def self.run(**args, &)
-      execute(**args, &)
+      # Reset error collection and execute interactor.
+      @errors = []
+      result = execute(**args, &)
+
+      # Collect errors and raise if needed.
+      raise GraphQL::ExecutionError, @errors.join(', ') if @errors.length.positive?
+
+      result
+    rescue GraphQL::ExecutionError => e
+      # Allow the user-safe errors from above to pass through.
+      raise GraphQL::ExecutionError, e
     rescue StandardError => e
+      # Wrap all other errors in a user-safe message.
       puts "Exception: #{e}"
       puts e.backtrace
 
@@ -12,6 +25,8 @@ module Interaction
     end
 
     def self.execute(**args, &); end
+
+    include Singleton
   end
 end
 

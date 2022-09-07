@@ -43,6 +43,8 @@ module Interaction
 
   class CreateUser < BaseInteraction
     def self.execute(first_name:, last_name:, email:, birthdate:, password:)
+      return @errors.push('Email is already taken.') if User.find_by(email:).present?
+
       User.create!(first_name:, last_name:, email:, birthdate:, password:)
     end
   end

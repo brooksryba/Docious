@@ -17,4 +17,16 @@ class User < ApplicationRecord
   def admin?
     group == 'admin'
   end
+
+  def nearby_users # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+    User
+      .where(User.arel_table[:latlon].st_distance(latlon).lt(preference&.max_distance))
+      .where(birthdate: preference&.max_age&.years&.ago..preference&.min_age&.years&.ago)
+      .where(deleted_at: nil)
+      .where.not(id:)
+  end
+
+  def conversations
+    Conversation.where(recipient_id: id).or(Conversation.where(author_id: id))
+  end
 end

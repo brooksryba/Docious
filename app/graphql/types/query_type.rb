@@ -22,11 +22,8 @@ module Types
       context[:current_user]
     end
 
-    def users # rubocop:disable Metrics/AbcSize
-      id = context[:current_user].id
-      point = context[:current_user]&.latlon
-      dist = context[:current_user]&.preference&.max_distance
-      User.where(User.arel_table[:latlon].st_distance(point).lt(dist)).where.not(id:)
+    def users
+      context[:current_user].nearby_users
     end
 
     def interests
@@ -34,8 +31,7 @@ module Types
     end
 
     def conversations
-      Conversation.where(recipient_id: context[:current_user]&.id)
-                  .or(Conversation.where(author_id: context[:current_user]&.id))
+      context[:current_user].conversations
     end
   end
 end
