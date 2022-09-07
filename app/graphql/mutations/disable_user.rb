@@ -2,16 +2,10 @@
 
 module Mutations
   class DisableUser < BaseMutation
-    argument :id, Integer, required: true
-
     type Types::UserType
 
-    def ready?(id:)
-      context[:current_user].id == id
-    end
-
-    def resolve(id:)
-      Interaction::DisableUser.run(id:)
+    def resolve
+      Interaction::DisableUser.run(id: context[:current_user].id)
     end
   end
 end

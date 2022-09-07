@@ -24,7 +24,7 @@ class GraphqlController < ApplicationController
   private
 
   # gets current user from token stored in the session
-  def current_user
+  def current_user # rubocop:disable Metrics/AbcSize
     # if we want to change the sign-in strategy, this is the place to do it
     return unless request.headers['Authentication']
 
@@ -33,7 +33,7 @@ class GraphqlController < ApplicationController
     user_id = token.gsub('user-id:', '').to_i
     user = User.find_by(id: user_id)
     user.update!(pinged_at: DateTime.current)
-    return user
+    user
   rescue ActiveSupport::MessageVerifier::InvalidSignature
     nil
   end
