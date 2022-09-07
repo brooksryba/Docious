@@ -3,7 +3,7 @@ AllCops:
   Exclude:
     - 'bin/bundle'
     - 'db/schema.rb'
-    - 'vendor/'    
+    - 'vendor/**/*'    
 
 Layout/EndOfLine:
   Enabled: false

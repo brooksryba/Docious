@@ -54,4 +54,4 @@ jobs:
       - name: SOS2
         run: pwd
       - name: Lint Ruby files
-        run: bundle exec rubocop --config .rubocop.yml --parallel 
+        run: bundle exec rubocop --parallel 
