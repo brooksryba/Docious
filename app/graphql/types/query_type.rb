@@ -23,7 +23,7 @@ module Types
     end
 
     def users
-      context[:current_user].nearby_users
+      context[:current_user]&.nearby_users
     end
 
     def interests
@@ -31,7 +31,7 @@ module Types
     end
 
     def conversations
-      context[:current_user].conversations
+      context[:current_user]&.conversations
     end
   end
 end
