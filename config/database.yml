@@ -10,10 +10,16 @@ default: &default
   timeout: 5000
   username: postgres
   password: root
+
   schema_search_path: "public,postgis"
 
 development:
   <<: *default
+  database: docious_development
+
+docker:
+  <<: *default
+  host: db
   database: docious_development
 
 # Warning: The database defined as "test" will be erased and
